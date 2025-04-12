@@ -99,6 +99,6 @@ If legally compelled:
 - 2026: DAO launch & compliance standards
 
 ## Contact
-- Twitter: [@etheridentity](https://twitter.com/etheridentity)
-- GitHub: [github.com/etheridentity](https://github.com/etheridentity)
+- Twitter: https://x.com/Ether_IDentity
+- E posta: e97461060@gmail.com
 
