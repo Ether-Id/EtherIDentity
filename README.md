@@ -59,7 +59,6 @@ The app decrypts and re-verifies the kycHash. If it matches the NFT metadata and
 ### 6. Exchange Integration (CEX/DEX Usage)
 When a user wants to KYC for an exchange:
 - They share the encrypted JSON file + kycHash
-- The exchange computes the hash from the JSON and private key to confirm it matches
 - The exchange then:
   - Trusts the on-chain NFT metadata if the hash matches
   - Stores the encrypted JSON for compliance
