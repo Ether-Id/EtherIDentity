@@ -8,11 +8,11 @@ Project Overview
 
 How EtherIdentity Works
 
-For Users
+ Users
 
-For Exchanges
+ Exchanges
 
-For Investors
+ Investors
 
 Technological Features & Techniques
 
@@ -149,28 +149,22 @@ Dart SDK
 Project Setup
 Clone this repository:
 
-bash
-Kopyala
+
 git clone https://github.com/Ether-Id/EtherIDentity.git
 Navigate to the project directory:
 
-bash
-Kopyala
+
 cd EtherIDentity
 Install dependencies:
 
-bash
-Kopyala
+
 flutter pub get
 Start the Android Emulator (from Android Studio or terminal):
 
-bash
-Kopyala
+
 flutter emulators --launch <emulator_id>
 Run the app:
 
-bash
-Kopyala
+
 flutter run
-License
-This project is licensed under the MIT License. For more details, please refer to the LICENSE file.
+
