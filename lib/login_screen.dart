@@ -24,7 +24,7 @@ class LoginScreen extends StatelessWidget {
                     ),
                   );
                 },
-                child: const Text("Yeni ID Oluştur"),
+                child: const Text("Create new ID"),
               ),
               const SizedBox(height: 20),
               ElevatedButton(
@@ -36,7 +36,7 @@ class LoginScreen extends StatelessWidget {
                     ),
                   );
                 },
-                child: const Text("ID'ni İçe Aktar"),
+                child: const Text("import ID"),
               ),
             ],
           ),

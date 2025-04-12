@@ -43,16 +43,17 @@ class _SetPinScreenState extends State<SetPinScreen> {
   void _showError(String message) {
     showDialog(
       context: context,
-      builder: (_) => AlertDialog(
-        title: const Text('Error'),
-        content: Text(message),
-        actions: [
-          TextButton(
-            onPressed: () => Navigator.pop(context),
-            child: const Text('OK'),
+      builder:
+          (_) => AlertDialog(
+            title: const Text('Error'),
+            content: Text(message),
+            actions: [
+              TextButton(
+                onPressed: () => Navigator.pop(context),
+                child: const Text('OK'),
+              ),
+            ],
           ),
-        ],
-      ),
     );
   }
 
@@ -96,10 +97,7 @@ class _SetPinScreenState extends State<SetPinScreen> {
               ),
             ),
             const SizedBox(height: 20),
-            ElevatedButton(
-              onPressed: _savePin,
-              child: const Text('Save PIN'),
-            ),
+            ElevatedButton(onPressed: _savePin, child: const Text('Save PIN')),
           ],
         ),
       ),

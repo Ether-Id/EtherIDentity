@@ -45,7 +45,7 @@ class _RegisterStep4ScreenState extends State<RegisterStep4Screen> {
     ScaffoldMessenger.of(context).showSnackBar(
       const SnackBar(
         content: Text(
-          "✅ Yapay zeka KYC doğrulaması başarıyla tamamlandı (%92).\n🔐 KYC Hash ve özel anahtar EtherIdentity sunucularına gönderildi.\n🪙 NFT mint edildi.",
+          "✅ AI KYC verification completed successfully (%92).\n🔐 KYC Hash and private key sent to EtherIdentity servers.\n🪙 NFT minted.",
         ),
         duration: Duration(seconds: 4),
       ),
@@ -58,9 +58,7 @@ class _RegisterStep4ScreenState extends State<RegisterStep4Screen> {
       if (!mounted) return;
       ScaffoldMessenger.of(context).showSnackBar(
         const SnackBar(
-          content: Text(
-            "Özel anahtar 64 karakter uzunluğunda olmalıdır (hex format).",
-          ),
+          content: Text("Private Key must be 64 characters long (hex format)."),
         ),
       );
       return;
@@ -110,7 +108,7 @@ class _RegisterStep4ScreenState extends State<RegisterStep4Screen> {
       if (!mounted) return;
       ScaffoldMessenger.of(
         context,
-      ).showSnackBar(SnackBar(content: Text("HATA: ${e.toString()}")));
+      ).showSnackBar(SnackBar(content: Text("Eror: ${e.toString()}")));
     }
   }
 
@@ -119,10 +117,10 @@ class _RegisterStep4ScreenState extends State<RegisterStep4Screen> {
     if (await file.exists()) {
       await Share.shareXFiles([
         XFile(file.path),
-      ], text: 'Şifreli KYC JSON dosyam');
+      ], text: 'My Encrypted KYC Json File');
     } else {
       ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(content: Text("Şifreli dosya bulunamadı.")),
+        const SnackBar(content: Text("Encrypted File Not Found.")),
       );
     }
   }
@@ -136,7 +134,7 @@ class _RegisterStep4ScreenState extends State<RegisterStep4Screen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text("MVP Doğrulama Ekranı")),
+      appBar: AppBar(title: const Text("Mvp Verification Screen")),
       body:
           _kycProcessing
               ? const Center(
@@ -145,7 +143,9 @@ class _RegisterStep4ScreenState extends State<RegisterStep4Screen> {
                   children: [
                     CircularProgressIndicator(),
                     SizedBox(height: 16),
-                    Text("🧠 Yapay zeka KYC bilgilerinizi kontrol ediyor..."),
+                    Text(
+                      "🧠 Artificial Intelligence Checks Your KYC Information..",
+                    ),
                   ],
                 ),
               )
@@ -156,11 +156,11 @@ class _RegisterStep4ScreenState extends State<RegisterStep4Screen> {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       const Text(
-                        "🔐 JSON dosyası özel anahtar ile şifrelenmiştir.",
+                        "🔐 Json File Encrypted with Private Key.",
                         style: TextStyle(fontWeight: FontWeight.bold),
                       ),
                       const SizedBox(height: 16),
-                      const Text("SHA-256 ile hesaplanan JSON Hash:"),
+                      const Text("SHA-256 Calculated Json Hash:"),
                       Text(
                         widget.jsonHash,
                         style: const TextStyle(fontSize: 12),
@@ -172,36 +172,34 @@ class _RegisterStep4ScreenState extends State<RegisterStep4Screen> {
                         style: const TextStyle(fontSize: 12),
                       ),
                       const Divider(height: 32),
-                      const Text(
-                        "💡 Dosyayı açmak için özel anahtarınızı girin (64 karakter hex formatında)",
-                      ),
+                      const Text("💡 Enter Your Private Key to Open the File"),
                       const SizedBox(height: 8),
                       TextField(
                         controller: _keyController,
                         decoration: const InputDecoration(
-                          labelText: "Özel Anahtar",
+                          labelText: "Private Key",
                           border: OutlineInputBorder(),
                         ),
                       ),
                       const SizedBox(height: 12),
                       ElevatedButton(
                         onPressed: _decryptJsonFile,
-                        child: const Text("Dosyayı Aç ve Doğrula"),
+                        child: const Text("Open the file and Verify"),
                       ),
                       const SizedBox(height: 12),
                       ElevatedButton(
                         onPressed: _exportEncryptedFile,
-                        child: const Text("Şifreli JSON Dosyasını Dışa Aktar"),
+                        child: const Text("Export Json File"),
                       ),
                       const SizedBox(height: 20),
                       if (_decryptedJson != null) ...[
-                        const Text("🔍 Çözülen ve Sıralı JSON İçeriği:"),
+                        const Text("🔍 Decoded Json Content:"),
                         Text(
                           _decryptedJson!,
                           style: const TextStyle(fontSize: 13),
                         ),
                         const SizedBox(height: 20),
-                        const Text("✅ Hesaplanan KYC Hash:"),
+                        const Text("✅ KYC Hash:"),
                         Text(
                           _calculatedKycHash ?? '',
                           style: const TextStyle(fontSize: 12),

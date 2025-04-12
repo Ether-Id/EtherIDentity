@@ -36,30 +36,36 @@ class _SecureEntryScreenState extends State<SecureEntryScreen> {
 
   void _validatePinAndOpen() {
     final inputPin = _pinController.text;
-    if (inputPin == _storedPin && _encryptedPath != null && File(_encryptedPath!).existsSync()) {
+    if (inputPin == _storedPin &&
+        _encryptedPath != null &&
+        File(_encryptedPath!).existsSync()) {
       Navigator.pushReplacement(
         context,
         MaterialPageRoute(
-          builder: (context) => RegisterStep4Screen(
-            jsonHash: _jsonHash!,
-            kycHash: _kycHash!,
-            encryptedPath: _encryptedPath!,
-          ),
+          builder:
+              (context) => RegisterStep4Screen(
+                jsonHash: _jsonHash!,
+                kycHash: _kycHash!,
+                encryptedPath: _encryptedPath!,
+              ),
         ),
       );
     } else {
       showDialog(
         context: context,
-        builder: (_) => AlertDialog(
-          title: const Text("Authentication Failed"),
-          content: const Text("PIN yanlış veya veri eksik. Lütfen uygulamayı sıfırlayın."),
-          actions: [
-            TextButton(
-              onPressed: () => Navigator.pop(context),
-              child: const Text("OK"),
-            )
-          ],
-        ),
+        builder:
+            (_) => AlertDialog(
+              title: const Text("Authentication Failed"),
+              content: const Text(
+                "Pin is incorrect or Data is Missing Reset the App.",
+              ),
+              actions: [
+                TextButton(
+                  onPressed: () => Navigator.pop(context),
+                  child: const Text("OK"),
+                ),
+              ],
+            ),
       );
     }
   }
@@ -73,13 +79,16 @@ class _SecureEntryScreenState extends State<SecureEntryScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text("PIN ile Giriş")),
+      appBar: AppBar(title: const Text("Login with PIN")),
       body: Padding(
         padding: const EdgeInsets.all(24.0),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            const Text("Lütfen 4 haneli PIN kodunuzu girin", style: TextStyle(fontSize: 16)),
+            const Text(
+              "Please Enter Your 4 Digit Pin Code",
+              style: TextStyle(fontSize: 16),
+            ),
             const SizedBox(height: 16),
             TextField(
               controller: _pinController,
@@ -94,7 +103,7 @@ class _SecureEntryScreenState extends State<SecureEntryScreen> {
             const SizedBox(height: 20),
             ElevatedButton(
               onPressed: _validatePinAndOpen,
-              child: const Text("Devam Et"),
+              child: const Text("Continue"),
             ),
           ],
         ),
